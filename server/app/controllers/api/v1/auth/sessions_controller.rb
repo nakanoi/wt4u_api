@@ -3,7 +3,7 @@ class Api::V1::Auth::SessionsController < ApplicationController
     if current_api_v1_user
       render json: {
         is_login: true,
-        user: current_user,
+        user: current_api_v1_user,
         message: 'Logged in.',
       }
     else
