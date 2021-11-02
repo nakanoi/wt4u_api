@@ -1,5 +1,5 @@
 class Api::V1::TypesController < ApplicationController
-  before_action :authenticate_api_v1_user!, only: %i[index create]
+  before_action :authenticate_api_v1_user!, only: [:index, :create]
 
   def index
     render json: {
