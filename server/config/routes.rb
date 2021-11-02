@@ -9,8 +9,10 @@ Rails.application.routes.draw do
         resources :sessions, only: %i[index]
       end
 
-      resources :types, only: %i[index create]
-      resources :agents, only: %i[index create]
+      resources :types, only: [:index, :create]
+      resources :agents, only:  [:index, :create]
+      resources :requests, only: [:index, :create, :show]
+      mount ActionCable.server => 'cable'
     end
   end
 end

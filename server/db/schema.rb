@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_01_131927) do
+ActiveRecord::Schema.define(version: 2021_11_01_233303) do
 
   create_table "agents", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.text "area"
@@ -21,6 +21,23 @@ ActiveRecord::Schema.define(version: 2021_11_01_131927) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["type_id"], name: "index_agents_on_type_id"
     t.index ["user_id"], name: "index_agents_on_user_id"
+  end
+
+  create_table "requests", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+    t.string "title"
+    t.text "area"
+    t.integer "cost"
+    t.integer "number"
+    t.date "date"
+    t.integer "days"
+    t.string "genre"
+    t.integer "range"
+    t.text "context"
+    t.boolean "status"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "sessions", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
@@ -74,6 +91,7 @@ ActiveRecord::Schema.define(version: 2021_11_01_131927) do
 
   add_foreign_key "agents", "types"
   add_foreign_key "agents", "users"
+  add_foreign_key "requests", "users"
   add_foreign_key "tourists", "types"
   add_foreign_key "tourists", "users"
   add_foreign_key "types", "users"

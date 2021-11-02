@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   has_one :type, dependent: :destroy
   has_one :agent, dependent: :destroy
   has_one :tourist, dependent: :destroy
+  has_many :request, dependent: :destroy
 end
