@@ -35,17 +35,7 @@ class Api::V1::RequestsController < ApplicationController
 
   private
     def request_params
-      params.require(
-        :area,
-        :title,
-        :cost,
-        :number,
-        :date,
-        :days,
-        :genre,
-        :range,
-        :context,
-      ).permit(
+      params.permit(
         :area,
         :title,
         :cost,

@@ -9,5 +9,8 @@ class User < ActiveRecord::Base
   has_one :type, dependent: :destroy
   has_one :agent, dependent: :destroy
   has_one :tourist, dependent: :destroy
-  has_many :request, dependent: :destroy
+  has_many :requests, dependent: :destroy
+  has_many :messages
+  has_many :members
+  has_many :rooms, through: :members
 end

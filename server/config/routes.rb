@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
+
   namespace :api do
     namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'auth', controllers: { 
@@ -12,7 +14,9 @@ Rails.application.routes.draw do
       resources :types, only: [:index, :create]
       resources :agents, only:  [:index, :create]
       resources :requests, only: [:index, :create, :show]
-      mount ActionCable.server => 'cable'
+      resources :rooms, only: [:index, :create, :show]
+      resources :messages, only: [:index, :create, :show]
+      resources :members, only: [:index, :create, :show]
     end
   end
 end
