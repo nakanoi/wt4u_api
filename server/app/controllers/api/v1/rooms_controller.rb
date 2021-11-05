@@ -24,20 +24,22 @@ class Api::V1::RoomsController < ApplicationController
     )
     if room.save
       member = Member.new(
-        user_id: current_ap1_v1_user.id,
+        user_id: current_api_v1_user.id,
         room_id: room.id,
+        name: current_api_v1_user.name,
       ).save
-      serialized_data = ActiveModelSerializers::Adapter::Json.new(
-        RoomSerializer.new(room)
-      ).serialized_hash
-      ActionCable.server.broadcast "room_for_#{room_params[:token]}", serialized_data
-      head :ok
+      member = Member.new(
+        user_id: room_params[:poster],
+        room_id: room.id,
+        name: room_params[:name],
+      ).save
     end
+    render json: room
   end
 
   private
     def room_params
-      params.permit(:title, :token)
+      params.permit(:title, :token, :poster, :name)
     end
 
 end
