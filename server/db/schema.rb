@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_120902) do
   end
 
   create_table "types", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.string "user_type"
+    t.string "user_type", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -105,8 +105,8 @@ ActiveRecord::Schema.define(version: 2021_11_04_120902) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "name"
-    t.string "email"
+    t.string "name", null: false
+    t.string "email", null: false
     t.text "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

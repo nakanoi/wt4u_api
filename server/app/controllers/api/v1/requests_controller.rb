@@ -30,6 +30,11 @@ class Api::V1::RequestsController < ApplicationController
       ).serializable_hash
       ActionCable.server.broadcast 'requests_channel', serialized_data
       head :ok
+    else
+      render json: {
+        status: 400,
+        message: "invalid paramators",
+      }
     end
   end
 
