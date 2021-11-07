@@ -33,8 +33,13 @@ class Api::V1::RoomsController < ApplicationController
         room_id: room.id,
         name: room_params[:name],
       ).save
+      render json: room
+    else
+      render json: {
+        status: 400,
+        message: "invalid paramators",
+      }
     end
-    render json: room
   end
 
   private

@@ -22,8 +22,13 @@ class Api::V1::MessagesController < ApplicationController
           messages: room.messages
         }
       )
+      render json: room
+    else
+      render json: {
+        status: 400,
+        message: "invalid paramators",
+      }
     end
-    render json: message
   end
 
   private

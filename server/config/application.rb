@@ -48,5 +48,7 @@ module Code
                  :methods => [:get, :post, :options, :delete, :put]
       end
     end
+    config.hosts << '.example.com'
+    config.autoload_paths << Rails.root.join("lib")
   end
 end
