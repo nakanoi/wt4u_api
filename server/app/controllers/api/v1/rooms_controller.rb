@@ -31,7 +31,7 @@ class Api::V1::RoomsController < ApplicationController
       member = Member.new(
         user_id: room_params[:poster],
         room_id: room.id,
-        name: room_params[:name],
+        name: User.find(room_params[:poster]).name,
       ).save
       render json: room
     else
@@ -44,7 +44,7 @@ class Api::V1::RoomsController < ApplicationController
 
   private
     def room_params
-      params.permit(:title, :token, :poster, :name)
+      params.permit(:title, :token, :poster)
     end
 
 end

@@ -8,9 +8,11 @@ RSpec.describe "Api::V1::Rooms", type: :request do
     @agent_headers.store(
       "Content-Type", "application/json"
     )
+    @tourist_user = FactoryBot.create(:tourist_user)
     @room_params = {
       title: "sample request",
       token: "tiagoaijiGVFSEFsdafh9r3GDSFsgadsv4a6g",
+      poster: @tourist_user.id,
     }
   end
 

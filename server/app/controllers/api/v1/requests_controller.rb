@@ -23,6 +23,7 @@ class Api::V1::RequestsController < ApplicationController
       context: request_params[:context],
       status: true,
       user_id: current_api_v1_user.id,
+      name: current_api_v1_user.name,
     )
     if request.save
       serialized_data = ActiveModelSerializers::Adapter::Json.new(

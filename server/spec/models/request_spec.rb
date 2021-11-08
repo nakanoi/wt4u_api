@@ -113,6 +113,16 @@ RSpec.describe Request, type: :model do
       end
     end
 
+    context "create request with nil name" do
+      it "get 401, title must be exist" do
+        @request.name = nil
+        @request.valid?
+        expect(@request.errors.full_messages).to include(
+          'Name can\'t be blank'
+        )
+      end
+    end
+
     context "create request with nil user ID" do
       it "get 401, title must be exist" do
         @request.user_id = nil
