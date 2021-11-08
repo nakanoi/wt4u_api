@@ -10,6 +10,7 @@ class Request < ApplicationRecord
   validates :context, presence: true
   validates :status, presence: true
   validates :user, presence: true
+  validates :name, presence: true
 
   belongs_to :user
 end

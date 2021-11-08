@@ -18,6 +18,7 @@ RSpec.describe "Api::V1::Requests", type: :request do
       genre: "自然観光",
       range: 50,
       context: "This is just a sample post.",
+      name: "tourist"
     }
   end
 

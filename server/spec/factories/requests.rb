@@ -11,5 +11,6 @@ FactoryBot.define do
     context { "This is just a sample post." }
     status { true }
     association :user, factory: :tourist_user
+    name { user.name }
   end
 end

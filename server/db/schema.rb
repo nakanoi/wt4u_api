@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_04_120902) do
+ActiveRecord::Schema.define(version: 2021_11_08_042038) do
 
   create_table "agents", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.text "area"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_120902) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
     t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
@@ -86,7 +87,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_120902) do
   end
 
   create_table "types", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.string "user_type", null: false
+    t.string "user_type"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -105,8 +106,8 @@ ActiveRecord::Schema.define(version: 2021_11_04_120902) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "name", null: false
-    t.string "email", null: false
+    t.string "name"
+    t.string "email"
     t.text "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
