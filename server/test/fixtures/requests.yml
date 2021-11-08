@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  area: MyText
+  cost: 1
+  number: 1
+  date: 2021-11-02
+  days: 1
+  genre: MyString
+  range: 1
+  context: MyText
+  status: false
+  user: one
+
+two:
+  title: MyString
+  area: MyText
+  cost: 1
+  number: 1
+  date: 2021-11-02
+  days: 1
+  genre: MyString
+  range: 1
+  context: MyText
+  status: false
+  user: two
