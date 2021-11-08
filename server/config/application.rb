@@ -36,5 +36,19 @@ module Code
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.session_store :active_record_store, key: '_interslice_session'
+    config.middleware.use ActionDispatch::Session::ActiveRecordStore
+    config.middleware.use ActionDispatch::Flash
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+                 :headers => :any,
+                 :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+                 :methods => [:get, :post, :options, :delete, :put]
+      end
+    end
+    config.hosts << '.example.com'
+    config.autoload_paths << Rails.root.join("lib")
   end
 end
